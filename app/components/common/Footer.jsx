@@ -1,5 +1,7 @@
 import React from "react";
 import { FaceIcon, InIcon, InstIcon } from "../Helper/Icon";
+import { footlistData } from "../Helper/Helper";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -42,58 +44,27 @@ function Footer() {
             </div>
           </div>
           <div className="flex gap-y-[25px] max-lg:justify-between gap-x-[170px] lg:gap-x-[60px] xl:gap-x-[96px] flex-wrap lg:flex-nowrap w-full">
-            <div>
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-normal text-[var(--Grey,#D7D9DD)] leading-[150%]">
-                Services
-              </h2>
-              <ul className="mt-[10px] md:mt-[20px] lg:mt-[31px]">
-                {sevData.map((item, index) => (
-                  <li key={index} className="mt-[6px]">
-                    <a
-                      href={item.link}
-                      className="text-sm md:text-base lg:text-lg text-normal text-[var(--Grey,#D7D9DD)] leading-[144%] underline ff-av hover:text-[#fff] transition-all duration-500 ease-in-out"
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-normal text-[var(--Grey,#D7D9DD)] leading-[150%]">
-                Company
-              </h2>
-              <ul className="mt-[10px] md:mt-[20px] lg:mt-[31px]">
-                {comData.map((item, index) => (
-                  <li key={index} className="mt-[6px]">
-                    <a
-                      href={item.link}
-                      className="text-sm md:text-base lg:text-lg text-normal text-[var(--Grey,#D7D9DD)] leading-[144%] underline ff-av hover:text-[#fff] transition-all duration-500 ease-in-out"
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-normal text-[var(--Grey,#D7D9DD)] leading-[150%]">
-                Contact Us
-              </h2>
-              <ul className="mt-[10px] md:mt-[20px] lg:mt-[31px]">
-                {contData.map((item, index) => (
-                  <li key={index} className="mt-[6px]">
-                    <a
-                      href={item.link}
-                      target="blank"
-                      className="text-sm md:text-base lg:text-lg text-normal text-[var(--Grey,#D7D9DD)] leading-[144%] underline ff-av hover:text-[#fff] transition-all duration-500 ease-in-out"
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {footlistData.map((item, index) => {
+              return (
+                <div key={index}>
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-normal text-[var(--Grey,#D7D9DD)] leading-[150%]">
+                    {item.title}
+                  </h2>
+                  <ul className="mt-[10px] md:mt-[20px] lg:mt-[31px]">
+                    {item.sev.map((items, subIndex) => (
+                      <li key={subIndex} className="mt-[6px]">
+                        <Link
+                          href={items.href}
+                          className="text-sm md:text-base lg:text-lg text-normal text-[var(--Grey,#D7D9DD)] leading-[144%] underline ff-av hover:text-[#fff] transition-all duration-500 ease-in-out"
+                        >
+                          {items.text}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
